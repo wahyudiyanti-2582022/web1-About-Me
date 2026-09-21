@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About Me</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--HEADER-->
+        <header>
+        <h1>About me</h1>
+        <p>Welcome to my personal profile page</p>
+        </header>
+
+        <!--NAVIGATOR: Link ke section lainnya-->
+        <nav>
+            <a href="#Profile">Profile</a>
+            <a href="#Hobbies">Hobbies</a>
+            <a href="#Academic">Academic</a>
+            <a href="#Contact">Contact</a>
+        </nav>
+        <hr>
+
+        <!--MAIN-->
+        <main>
+            <section id=" profile">
+                <h2>Student Profile</h2>
+                <img
+                    src="https://i.ibb.co.com/N4jcxnK/enjelina-mt-lawu.jpg"
+                    alt="My Profile Photo"
+                    width="400"
+                    height="300"
+                    >
+                    <br>
+                    <p>
+                      Hello, my name is Wahyudiyanti Enjelina Ginting. I am a student at Advent University Indonesia,
+                      majoring in Information Systems, Faculty of Informatic Engginering for the 2025 academic year. 
+                    </p>
+                    <p>
+                         I hope my website will help me find a job as a data analyst
+                    </p>
+                    <h3>Personal Informasion</h3>
+                    <p>
+                        <strong>Name: </strong>Wahyudiyanti Enjelina<br>
+                         <strong>NIM: </strong>2582022<br>
+                          <strong>Study Program: </strong> Information Systems<br>
+                           <strong>Email: </strong>2582022@unai.edu<br>
+                           <a href="mailto:2582022@unai.edu">
+                           </a>
+
+                     </p>
+            </section>
+            <br>
+            <section id="Hobbies">
+                <h3> My Hobbies</h3>
+                <ul>
+                    <li>traveling</li>
+                    <li>mountaineering</li>
+                    <li>reading a book</li>
+                    <li>leg day</li>
+                </ul>
+
+            </section>
+            <section id="Academic">
+                <h2>Academic record</h2>
+               <table border="1">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Semester</th>
+            <th>Academic Year</th>
+            <th>GPA</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Odd Semester</td>
+            <td>2025/2026</td>
+            <td>3.82</td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Even Semester</td>
+            <td>2025/2026</td>
+            <td>3.72</td>
+        </tr>
+    </tbody>
+</table>
+            </section>
+            <section id="Contact">
+                <h2>Contact Me</h2>
+                <form action="#" method="post">
+                    <label for="Fullname">Full Name:</label><br>
+                    <input type="text" id="Fullname" name="Fullname"><br>
+
+                    <label for="Email">Email address:</label><br>
+                    <input type="email" id="email" name="email"><br><br>
+
+                    <label for="category"> Kategori pesan:</label><br>
+                    <select id="category" name="category">
+                        <option value="">--pilih kategori--</option>
+                        <option value="academic">Akademik</option>
+                        <option value="proyek">kolaborasi proyek</option>
+                        <option value="general">Umum</option>
+                    </select>
+                </form>
+            </section>
+            <label for="massage">pesan:</label><br>
+            <textarea id="massage" name="massage"
+                        rows="6" cols="40"></textarea>
+            <br><br>
+            <button type="submit">kirim pesan</button>
+
+            <!--validasi-->
+            <input type="text" id="Fullname" name="Fullname"
+                        minlength="3" maxlength="50" required>
+
+
+            <input type="email" name="massage"
+                        minlength="10" maxlength="500" required></textarea>
+            
+            <body>
+                <header>...</header>
+                <nav>...</nav>
+
+                <main>
+                    <section id="Profile">...</section>
+                    <section id="Hobbies">...</section>
+                    <section id="academic">...</section>
+                    <section id="Contact">...</section>
+                </main>
+
+                <footer>
+                    <p>&copy; 2026 Wahyudiyanti Enjelina Ginting | Web Programming I</p>
+                    <p>
+                        Faculty of Informatic Engginering<br>
+                        University Advent Indonesia
+                    </p>
+                </footer>
+            </body>
+        </main>
+    </body>
+</html>
