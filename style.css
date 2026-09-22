@@ -1,0 +1,47 @@
+h2 {
+    text-align: center;
+    border-left: none;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    background-color: #B85C4A;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+p {
+    background-color: #fcfbfb;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(62, 39, 35, 0.08);
+}
+
+img:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+    box-shadow: 0 15px 35px rgba(62, 39, 35, 0.3);
+}
+footer {
+    text-align: center;
+}
+
+/* Mengubah semua link email menjadi biru */
+a[href^="mailto:"] {
+    color: blue;
+    text-decoration: underline; /* Menambahkan garis bawah khas link */
+}
+
+/* Mengubah warna saat link sudah pernah diklik agar tetap biru */
+a[href^="mailto:"]:visited {
+    color: blue;
+}
+.container {
+    text-align: center;
+    margin: auto;
+}
+
