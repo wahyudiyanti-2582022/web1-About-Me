@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hubungi Wahyudiyanti Enjelina lewat formulir, email, atau media sosial.">
+  <title>Hubungi Saya | Wahyudiyanti Enjelina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-isi">
+      <a href="index.html" class="logo">Wahyudiyanti Enjelina</a>
+      <nav aria-label="Navigasi utama">
+        <ul class="menu">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="biodata.html">Biodata</a></li>
+          <li><a href="myHoliday.html">Liburan Saya</a></li>
+          <li><a href="contact.html" aria-current="page">Hubungi Saya</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="judul-halaman">
+      <div class="container">
+        <h1>Hubungi Saya</h1>
+        <p>
+          Halo! Saya senang mendengar kabar darimu. Silakan hubungi saya
+          untuk pertanyaan, kolaborasi, atau komunikasi profesional lewat
+          formulir ini atau kontak di sebelahnya.
+        </p>
+      </div>
+    </section>
+
+    <section class="bagian">
+      <div class="container kontak-layout">
+
+        <div>
+          <h2>Kirim Pesan</h2>
+          <p class="sub">Kolom bertanda <span class="wajib">*</span> wajib diisi.</p>
+
+          <!-- Ganti email@contoh.com dengan emailmu.
+               Saat dikirim, aplikasi email di perangkat pengunjung akan terbuka. -->
+          <form action="mailto:2582022@unai.edu" method="post" enctype="text/plain">
+
+            <div class="form-grup">
+              <label for="nama">Nama Lengkap <span class="wajib">*</span></label>
+              <input type="text" id="nama" name="nama" required minlength="3" maxlength="50"
+                     placeholder="Tulis nama lengkapmu">
+            </div>
+
+            <div class="form-grup">
+              <label for="email">Alamat Email <span class="wajib">*</span></label>
+              <input type="email" id="email" name="email" required
+                     placeholder="nama@email.com">
+            </div>
+
+            <div class="form-grup">
+              <label for="subjek">Subjek <span class="wajib">*</span></label>
+              <input type="text" id="subjek" name="subjek" required minlength="3"
+                     placeholder="Topik pesanmu">
+            </div>
+
+            <div class="form-grup">
+              <label for="pesan">Pesan <span class="wajib">*</span></label>
+              <textarea id="pesan" name="pesan" rows="6" required minlength="10" maxlength="500"
+                        placeholder="Tulis pesanmu di sini"></textarea>
+            </div>
+
+            <button type="submit" class="tombol">Kirim Pesan</button>
+          </form>
+        </div>
+
+        <!-- ===== INFORMASI KONTAK ===== -->
+        <aside>
+          <h2>Kontak Langsung</h2>
+          <p class="sub">Pilih cara yang paling nyaman untukmu.</p>
+
+          <ul class="info-kontak">
+            <li>
+              <strong>Email</strong>
+              <a href="mailto:2582022@unai.edu">2582022@unai.edu</a>
+            </li>
+            <li>
+              <strong>Instagram</strong>
+              <a href="https://www.instagram.com/enjelin.g/" target="_blank" rel="noopener noreferrer">@enjelin.g</a>
+            </li>
+            <li>
+              <strong>GitHub</strong>
+              <a href="https://github.com/wahyudiyanti-2582022" target="_blank" rel="noopener noreferrer">https://github.com/wahyudiyanti-2582022</a>
+            </li>
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Wahyudiyanti Enjelina | Pemrograman Web I.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
