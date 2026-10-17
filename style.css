@@ -1,568 +1,558 @@
-
-/*
-Definisikan Global Stling
-*/
-
-*{
-    box-sizing: border-box;
+:root {
+  --warna-utama: #4a47e0;        /* indigo: tombol, logo, link */
+  --warna-utama-gelap: #3532b8;
+  --warna-sorot: #a9a6f5;        /* lavender: aksen */
+  --warna-teks: #1d1d2e;
+  --warna-redup: #5b5f7a;
+  --warna-latar: #f4f4ff;        /* latar bagian lavender muda */
+  --warna-putih: #ffffff;
+  --warna-garis: #e0e1f5;
+  --bayangan: 0 10px 30px rgba(74, 71, 224, 0.14);
+ 
+  --font-judul: "Josefin Sans", "Trebuchet MS", Arial, sans-serif;
+  --font-isi: "Nunito", "Segoe UI", Tahoma, Arial, sans-serif;
 }
-
+ 
+/* ---------- 2. Reset sederhana + Box Model ---------- */
+* {
+  box-sizing: border-box; /* padding & border dihitung di dalam lebar elemen */
+  margin: 0;
+  padding: 0;
+}
+ 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #263238;
-    background-color: #f5f7f6;
+  font-family: var(--font-isi);
+  color: var(--warna-teks);
+  background-color: var(--warna-putih);
+  line-height: 1.7;
 }
-
+ 
+/* Gambar responsif: tidak pernah melebihi lebar wadahnya */
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
-
+ 
 a {
-    color: #17694a;
+  color: var(--warna-utama);
 }
-
-/* Styling untuk Header */
-header {
-    padding: 32px 20px;
-    background-color: #17694a;
-    color: white;
-    text-align: center;
+ 
+/* Wadah untuk membatasi lebar konten dan memberi jarak kiri-kanan */
+.container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-header h1 {
-    margin: 0;
-    font-size: 2rem;
+ 
+h1, h2, h3 {
+  font-family: var(--font-judul);
+  line-height: 1.25;
 }
-
-header p{
-    margin: 8px 0 0;
+ 
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
 }
-/* Styling untuk Navigation */
-nav {
-    padding: 14px 20px;
-    background-color: white;
-    border-bottom: 1px solid #d7e1dc;
-    text-align: center;
+ 
+.sub {
+  color: var(--warna-redup);
+  margin-bottom: 24px;
 }
-
-nav a{
-    display: inline-block;
-    margin: 4px 10px;
-    color: #17694a;
-    font-weight: bold;
-    text-decoration: none;
-
+ 
+/* ---------- 3. Header & navigasi (Flexbox) ---------- */
+.site-header {
+  background-color: var(--warna-putih);
+  border-bottom: 1px solid var(--warna-garis);
 }
-
-nav a:hover{
-    text-decoration: underline;
+ 
+.header-isi {
+  display: flex;
+  flex-direction: column;   /* HP: logo di atas, menu di bawah */
+  align-items: center;
+  gap: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
-
-/* Styling untuk Main */
-main {
-    width: 90%;
-    max-width: 1000px;
-    margin: 24px auto;
+ 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-judul);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--warna-teks);
 }
-
-/* memilih class content-grid */
-.content-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+ 
+/* Batang kecil berwarna di samping logo */
+.logo::before {
+  content: "";
+  width: 7px;
+  height: 18px;
+  background-color: var(--warna-utama);
 }
-
-/* Styling untuk Profile Section */
-section {
-    padding: 24px;
-    background-color: white;
-    border: 1px solid #d7e1dc;
-    border-radius: 16px;
+ 
+.menu {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;          /* menu turun ke baris baru kalau sempit */
+  justify-content: center;
+  gap: 4px 6px;
 }
-
-section h2{
-    margin-top: 0;
-    color: #17694a;
+ 
+.menu a {
+  display: block;
+  padding: 4px 10px;
+  font-family: var(--font-judul);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--warna-teks);
+  border-bottom: 2px solid transparent;
 }
-
-/*Profile section flexbox*/
-.profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-    position: relative;
-
+ 
+.menu a:hover,
+.menu a[aria-current="page"] {
+  color: var(--warna-utama);
+  border-bottom-color: var(--warna-utama);
 }
-
-.profile-photo{
-    width: 180px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #17694a;
+ 
+a:focus-visible {
+  outline: 3px solid var(--warna-sorot);
+  outline-offset: 2px;
 }
-
-.profile-info {
-    flex: 1;
+ 
+/* ---------- 4. Bagian utama / Hero ---------- */
+.hero {
+  background-color: var(--warna-putih);
+  padding: 40px 0 56px;
 }
-.profile-info h2{
-    margin-bottom: 8px;
+ 
+.hero-isi {
+  display: flex;
+  flex-direction: column;   /* HP: foto di atas, teks di bawah */
+  align-items: center;
+  gap: 32px;
 }
-.profile-info p{
-    margin:5px 0;
+ 
+/* Foto berbentuk lengkung (arch) dengan latar gradasi lavender */
+.hero-foto {
+  width: 260px;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(180deg, #e6e7ff 0%, var(--warna-sorot) 100%);
+  border-radius: 130px 130px 0 90px;  /* kiri-atas, kanan-atas, kanan-bawah, kiri-bawah */
+  overflow: hidden;
+  flex-shrink: 0;
 }
-
-/* badge */
-.badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 6px 12px;
-    background-color: #17694a;
-    color: white;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
+ 
+.hero-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* foto dipotong rapi, tidak gepeng */
 }
-
-/* Styling untuk Hobbies
-*/
-#hobbies ol, #hobbies ul {
-    padding-left:24px;
-
+ 
+.hero-teks h1 {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
 }
-#hobbies li {
-    margin-bottom: 6px;
-
+ 
+.hero-teks p {
+  margin-bottom: 12px;
 }
-
-.table-container {
-    width: 100%;
-    overflow-x: auto;
+ 
+/* ---------- 5. Tombol / Call-to-action ---------- */
+.tombol-grup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
 }
+ 
+.tombol {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: var(--warna-utama);
+  color: var(--warna-putih);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 3px;
+  border: 2px solid var(--warna-utama);
+}
+ 
+.tombol:hover {
+  background-color: var(--warna-utama-gelap);
+  border-color: var(--warna-utama-gelap);
+}
+ 
+.tombol-kedua {
+  background-color: transparent;
+  color: var(--warna-utama);
+}
+ 
+.tombol-kedua:hover {
+  color: var(--warna-putih);
+}
+ 
+/* ---------- 6. Sekilas tentang saya (CSS Grid) ---------- */
+.tentang-ringkas {
+  background-color: var(--warna-latar);
+  padding: 56px 0;
+}
+ 
+.tentang-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* HP: 1 kolom */
+  gap: 32px;
+}
+ 
+.kartu-menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+ 
+.kartu-menu-item {
+  background-color: var(--warna-putih);
+  border-radius: 10px;
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: var(--bayangan);
+}
+ 
+.kartu-menu-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+ 
+.kartu-menu-item p {
+  font-size: 0.9rem;
+  color: var(--warna-redup);
+  margin-bottom: 10px;
+}
+ 
+/* ---------- 7. Kartu umum (dipakai di halaman Biodata) ---------- */
+.kartu {
+  background-color: var(--warna-putih);
+  border: 1px solid var(--warna-garis);
+  border-top: 4px solid var(--warna-sorot);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--bayangan);
+}
+ 
+.kartu h3 {
+  margin-bottom: 8px;
+}
+ 
+.kartu p {
+  color: var(--warna-redup);
+  margin-bottom: 12px;
+}
+ 
+/* ---------- 8. Footer ---------- */
+.site-footer {
+  background-color: var(--warna-latar);
+  border-top: 1px solid var(--warna-garis);
+  color: var(--warna-redup);
+  text-align: center;
+  padding: 22px 0;
+  font-size: 0.9rem;
+}
+ 
+/* ---------- 9. Judul halaman (halaman Biodata, Liburan, Kontak) ---------- */
+.judul-halaman {
+  background-color: var(--warna-latar);
+  padding: 36px 0;
+}
+ 
+.judul-halaman h1 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+  padding-left: 14px;
+  border-left: 7px solid var(--warna-utama);  /* batang aksen seperti logo */
+}
+ 
+.judul-halaman p {
+  color: var(--warna-redup);
+  padding-left: 21px;
+}
+ 
+.bagian {
+  padding: 36px 0;
+}
+ 
+/* ---------- 10. Halaman Biodata ---------- */
+.biodata-profil {
+  display: grid;
+  grid-template-columns: 1fr;   /* HP: foto di atas, data di bawah */
+  gap: 24px;
+}
+ 
+.foto-biodata {
+  width: 100%;
+  max-width: 200px;             /* syarat tugas: lebar maksimum 200px */
+}
+ 
+.foto-biodata img {
+  width: 100%;
+  aspect-ratio: 3 / 4;          /* syarat tugas: rasio 3:4 */
+  object-fit: cover;
+  border-radius: 100px 100px 0 40px;   /* bentuk lengkung senada beranda */
+  background: linear-gradient(180deg, #e6e7ff 0%, var(--warna-sorot) 100%);
+}
+ 
+.foto-biodata figcaption {
+  font-size: 0.85rem;
+  color: var(--warna-redup);
+  margin-top: 8px;
+}
+ 
+.data-diri {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px 12px;
+  margin-bottom: 20px;
+}
+ 
+.data-diri dt {
+  font-weight: 700;
+}
+ 
+.hobi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+ 
+.kartu ol,
+.kartu ul {
+  padding-left: 22px;
+}
+ 
+.kartu li {
+  margin-bottom: 8px;
+}
+ 
+.kartu li span {
+  display: block;
+  color: var(--warna-redup);
+  font-size: 0.9rem;
+}
+ 
+/* Tabel akademik */
+.tabel-wrapper {
+  overflow-x: auto;             /* tabel bisa digeser di layar sempit */
+}
+ 
 table {
-    width: 100%;
-    border-collapse: collapse;
-
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--warna-putih);
 }
-th, td{
-    padding: 12px;
-    border: 1px solid #d7e1dc;
+ 
+caption {
+  text-align: left;
+  color: var(--warna-redup);
+  padding-bottom: 8px;
 }
-th {
-    background-color: #17694a;
-    color: white;
-
+ 
+th, td {
+  padding: 10px 12px;
+  border: 1px solid var(--warna-garis);
+  text-align: left;
 }
-
-tbody tr:nth-child(even){
-    background-color: #f5f7f6;
-
+ 
+thead th {
+  background-color: var(--warna-utama);
+  color: var(--warna-putih);
 }
-
-form{
-    display: grid;
-    gap: 16px;
-    
+ 
+tbody tr:nth-child(even) {
+  background-color: var(--warna-latar);
 }
-
-.form-group {
-    display: grid;
-    gap: 6px;
+ 
+.tengah {
+  text-align: center;
 }
-label{
-    font-weight: bold;
+ 
+/* ---------- 11. Halaman Liburan: galeri Flexbox ---------- */
+.galeri {
+  display: flex;
+  flex-wrap: wrap;              /* foto turun ke baris baru otomatis */
+  justify-content: center;      /* baris terakhir rata tengah */
+  align-items: flex-start;
+  gap: 16px;                    /* jarak antar foto */
 }
-
-input, select, textarea{
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #b9c8c0;
-    border-radius: 8px;
-    font: inherit;
-    background-color: white;
+ 
+.galeri-item {
+  flex: 1 1 100%;               /* HP: 1 foto per baris */
+  background-color: var(--warna-putih);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--bayangan);
 }
-
-textarea{
-    min-height: 120px;
-    resize: vertical;
+ 
+.galeri-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;          /* semua foto ukuran seragam */
+  object-fit: cover;            /* foto dipotong rapi, tidak gepeng */
 }
-input:focus, select:focus, textarea:focus{
-    outline: 2px solid #17694a;
-    outline-offset: 2px;
+ 
+.galeri-item figcaption {
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  color: var(--warna-redup);
 }
-button {
-    width: fit-content;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #17694a;
-    color: white;
-    font: inherit;
-    font-weight: bold;
-    cursor: pointer;
+ 
+/* ---------- 12. Halaman Kontak ---------- */
+.kontak-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
 }
-button:hover {
-    background-color: #0d5038;
+ 
+.form-grup {
+  margin-bottom: 16px;
 }
-/* Terakhir Footer */
-footer {
-    margin-top: 0;
+ 
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
-footer {
-    margin-top: 24px;
-    padding: 24px 20px;
-    background-color: #17694a;
-    color: white;
-    text-align: center;
+ 
+.wajib {
+  color: #c0392b;
 }
-
-footer p {
-    margin: 4px 0;
+ 
+input,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--warna-teks);
+  background-color: var(--warna-putih);
+  border: 1px solid #c4c6e8;
+  border-radius: 6px;
 }
-
-@media (min-width: 768px){
-    .profile{
-        flex-direction: row;
-        text-align: left;
-    }
-    .content-grid{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .profile{grid-column: 1/ -1;}
-    #contact{grid-column: 1/ -1;}
+ 
+textarea {
+  resize: vertical;
 }
-/* Tambahan agar Student Profile dan foto berada di tengah */
-section h2 {
-    text-align: center;
+ 
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--warna-sorot);
+  outline-offset: 2px;
 }
-
-.profile {
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center;
-    text-align: center !important;
+ 
+button.tombol {
+  cursor: pointer;
+  font-family: inherit;
 }
-
-/* Membuat foto profile menjadi bulat dan berada di tengah */
-#profile img {
-    width: 180px !important;
-    height: 180px !important;
-    object-fit: cover;
-    border-radius: 50% !important;
-    border: 4px solid #17694a;
-    display: block;
-    margin: 0 auto;
+ 
+.info-kontak {
+  list-style: none;
+  background-color: var(--warna-latar);
+  border-radius: 10px;
+  padding: 20px;
 }
-/* Foto utuh (tidak kepotong), ukuran normal */
-.profile-photo,
-#profile img,
-.profile img {
-    width: 220px !important;
-    height: auto !important;
-    max-width: 100%;
-    aspect-ratio: auto !important;
-    object-fit: contain;
-    border-radius: 16px !important;
-    border: 4px solid #17694a;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+ 
+.info-kontak li {
+  margin-bottom: 14px;
 }
-
-/* Lebih kecil di HP */
-@media (max-width: 480px) {
-    .profile-photo,
-    #profile img,
-    .profile img {
-        width: 170px !important;
-    }
-/*
-Definisikan Global Stling
-*/
-
-*{
-    box-sizing: border-box;
+ 
+.info-kontak li:last-child {
+  margin-bottom: 0;
 }
-
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #263238;
-    background-color: #f5f7f6;
+ 
+.info-kontak strong {
+  display: block;
+  font-family: var(--font-judul);
 }
-
-img {
-    max-width: 100%;
-    height: auto;
+ 
+@media (min-width: 600px) {
+  .kartu-menu {
+    grid-template-columns: repeat(3, 1fr);  /* 3 kartu sejajar */
+    align-items: start;
+  }
+ 
+  /* Kartu dibuat naik-turun seperti di desain referensi */
+  .kartu-menu-item:nth-child(2) {
+    transform: translateY(24px);
+  }
+ 
+  .kartu-menu-item:nth-child(3) {
+    transform: translateY(-8px);
+  }
 }
-
-a {
-    color: #17694a;
-}
-
-/* Styling untuk Header */
-header {
-    padding: 32px 20px;
-    background-color: #17694a;
-    color: white;
-    text-align: center;
-}
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-header p{
-    margin: 8px 0 0;
-}
-/* Styling untuk Navigation */
-nav {
-    padding: 14px 20px;
-    background-color: white;
-    border-bottom: 1px solid #d7e1dc;
-    text-align: center;
-}
-
-nav a{
-    display: inline-block;
-    margin: 4px 10px;
-    color: #17694a;
-    font-weight: bold;
-    text-decoration: none;
-
-}
-
-nav a:hover{
-    text-decoration: underline;
-}
-
-/* Styling untuk Main */
-main {
-    width: 90%;
-    max-width: 1000px;
-    margin: 24px auto;
-}
-
-/* memilih class content-grid */
-.content-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-}
-
-/* Styling untuk Profile Section */
-section {
-    padding: 24px;
-    background-color: white;
-    border: 1px solid #d7e1dc;
-    border-radius: 16px;
-}
-
-section h2{
-    margin-top: 0;
-    color: #17694a;
-}
-
-/*Profile section flexbox*/
-.profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-    position: relative;
-
-}
-
-.profile-photo{
-    width: 180px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #17694a;
-}
-
-.profile-info {
+ 
+@media (min-width: 768px) {
+  .header-isi {
+    flex-direction: row;            /* logo kiri, menu kanan */
+    justify-content: space-between;
+  }
+ 
+  .hero {
+    padding: 72px 0 88px;
+  }
+ 
+  .hero-isi {
+    flex-direction: row;            /* foto kiri, teks kanan */
+    gap: 64px;
+  }
+ 
+  .hero-foto {
+    width: 340px;
+    border-radius: 170px 170px 0 120px;
+  }
+ 
+  .hero-teks {
     flex: 1;
-}
-.profile-info h2{
-    margin-bottom: 8px;
-}
-.profile-info p{
-    margin:5px 0;
-}
-
-/* badge */
-.badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 6px 12px;
-    background-color: #17694a;
-    color: white;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-}
-
-/* Styling untuk Hobbies
-*/
-#hobbies ol, #hobbies ul {
-    padding-left:24px;
-
-}
-#hobbies li {
-    margin-bottom: 6px;
-
-}
-
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-
-}
-th, td{
-    padding: 12px;
-    border: 1px solid #d7e1dc;
-}
-th {
-    background-color: #17694a;
-    color: white;
-
+  }
+ 
+  .hero-teks h1 {
+    font-size: 2.8rem;
+  }
+ 
+  .tentang-ringkas {
+    padding: 72px 0;
+  }
+ 
+  .tentang-grid {
+    grid-template-columns: 1fr 1fr; /* teks kiri, kartu kanan */
+    align-items: center;
+    gap: 48px;
+  }
+ 
+  .biodata-profil {
+    grid-template-columns: 200px 1fr;   /* foto kiri, data kanan */
+    gap: 36px;
+  }
+ 
+  .hobi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+ 
+  .kontak-layout {
+    grid-template-columns: 3fr 2fr;     /* form kiri, info kontak kanan */
+  }
+ 
+  .galeri-item {
+    flex: 0 1 calc(50% - 8px);          /* 2 foto per baris */
+  }
 }
 
-tbody tr:nth-child(even){
-    background-color: #f5f7f6;
-
-}
-
-form{
-    display: grid;
-    gap: 16px;
-    
-}
-
-.form-group {
-    display: grid;
-    gap: 6px;
-}
-label{
-    font-weight: bold;
-}
-
-input, select, textarea{
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #b9c8c0;
-    border-radius: 8px;
-    font: inherit;
-    background-color: white;
-}
-
-textarea{
-    min-height: 120px;
-    resize: vertical;
-}
-input:focus, select:focus, textarea:focus{
-    outline: 2px solid #17694a;
-    outline-offset: 2px;
-}
-button {
-    width: fit-content;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #17694a;
-    color: white;
-    font: inherit;
-    font-weight: bold;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #0d5038;
-}
-/* Terakhir Footer */
-footer {
-    margin-top: 0;
-}
-footer {
-    margin-top: 24px;
-    padding: 24px 20px;
-    background-color: #17694a;
-    color: white;
-    text-align: center;
-}
-
-footer p {
-    margin: 4px 0;
-}
-
-@media (min-width: 768px){
-    .profile{
-        flex-direction: row;
-        text-align: left;
-    }
-    .content-grid{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .profile{grid-column: 1/ -1;}
-    #contact{grid-column: 1/ -1;}
-}
-/* Tambahan agar Student Profile dan foto berada di tengah */
-section h2 {
-    text-align: center;
-}
-
-.profile {
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center;
-    text-align: center !important;
-}
-
-/* Membuat foto profile menjadi bulat dan berada di tengah */
-#profile img {
-    width: 180px !important;
-    height: 180px !important;
-    object-fit: cover;
-    border-radius: 50% !important;
-    border: 4px solid #17694a;
-    display: block;
-    margin: 0 auto;
-}
-/* Foto utuh (tidak kepotong), ukuran normal */
-.profile-photo,
-#profile img,
-.profile img {
-    width: 220px !important;
-    height: auto !important;
-    max-width: 100%;
-    aspect-ratio: auto !important;
-    object-fit: contain;
-    border-radius: 16px !important;
-    border: 4px solid #17694a;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Lebih kecil di HP */
-@media (max-width: 480px) {
-    .profile-photo,
-    #profile img,
-    .profile img {
-        width: 170px !important;
-    }
+@media (min-width: 992px) {
+  .galeri-item {
+    flex: 0 1 calc((100% - 32px) / 3);  /* 3 foto per baris */
+  }
 }
